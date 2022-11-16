@@ -1,0 +1,15 @@
+*.class
+*.log
+artifacts/
+out/
+*.iml
+*.ipr
+logs/
+log/
+target/
+.svn/
+.shelf/
+*.iws
+.idea/
+.idea/workspace.xml
+*.info
