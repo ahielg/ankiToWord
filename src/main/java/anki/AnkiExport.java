@@ -1,8 +1,6 @@
 package anki;
 
-import jakarta.xml.bind.JAXBException;
 import lombok.extern.slf4j.Slf4j;
-import org.docx4j.openpackaging.exceptions.Docx4JException;
 import org.jsoup.Jsoup;
 
 import java.io.File;
@@ -11,8 +9,6 @@ import java.sql.*;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
 
@@ -34,8 +30,6 @@ public class AnkiExport {
 
     /**
      * select all rows in the warehouses table
-     *
-     * @return
      */
     public List<AnkiQuestion> queryQuestions(String fileLocation) {
        /* String sql = "select  json_extract(decks, '$.'||c.did||'.name') as topic, sfld as sub, flds as data from notes n join cards c on c.nid=n.id " +
@@ -86,13 +80,13 @@ public class AnkiExport {
         return Jsoup.parse(html).text();
     }
 
-    public static void main(String[] args) throws JAXBException, Docx4JException, IOException {
+    public static void main(String[] args) throws IOException {
         AnkiExport anki = new AnkiExport();
         //String fileZip = "c://Users/User/Downloads/t2.colpkg";
         String fileZip = "c://Users/User/Downloads/t.apkg";
         File ankiDbFile = UnzipFile.unzip(fileZip);
 
-        String fileDB = "C://Users/User/AppData/Roaming/Anki2/אחיאל/collection.anki2";
+        //String fileDB = "C://Users/User/AppData/Roaming/Anki2/user/collection.anki2";
         //File ankiDbFile = new File(fileDB);
         List<AnkiQuestion> ankiQuestions = anki.queryQuestions(ankiDbFile.getAbsolutePath());
 
