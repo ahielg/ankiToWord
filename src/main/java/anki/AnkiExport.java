@@ -119,12 +119,17 @@ public class AnkiExport {
                             //.map(AnkiExport::html2text)
                             .forEach(q -> {
                                 System.out.println("❓ " + currQuestion.getAndIncrement() + ". " + html2text(q.getQuestion()));
-                                System.out.println(html2text(notNull(q.getClue()).replaceAll("<br>","~")).replaceAll("~","\n"));
+                                String clue = q.getClue();
+                                System.out.println(toBrString(clue));
                                 System.out.println();
                             });
                 });
 
         //ConvertInXHTMLFile.createDocx("<b>שלום</b> אחיאל!!!");
+    }
+
+    private static String toBrString(String clue) {
+        return html2text(notNull(clue).replaceAll("<br>", "~")).replaceAll("~",System.lineSeparator());
     }
 
     private static String notNull(String str) {
