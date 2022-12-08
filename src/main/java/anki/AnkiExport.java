@@ -123,7 +123,7 @@ public class AnkiExport {
     }
 
     private static String toBrString(String clue) {
-        return html2text(notNull(clue).replaceAll("<br>", "~")).replaceAll("~",System.lineSeparator()).replaceAll("\\:\\)", ")");
+        return html2text(notNull(clue).replaceAll("<br>", "~")).replaceAll("~",System.lineSeparator()).replaceAll(":\\)", ")");
     }
 
     private static String notNull(String str) {
