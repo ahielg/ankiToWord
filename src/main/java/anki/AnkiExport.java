@@ -97,7 +97,7 @@ public class AnkiExport {
         AtomicReference<String> currTopic = new AtomicReference<>("");
         AtomicInteger currQuestion = new AtomicInteger(1);
         sortedTopics.stream()
-                .filter(t -> t.contains("סי רסג"))
+                .filter(t -> t.contains("סי רעא") ||  t.contains("סי רעט"))
                 .map(questionsByTopic::get)
                 .forEach(questions -> {
                     AnkiQuestion firstQuestion = questions.get(0);
@@ -123,7 +123,7 @@ public class AnkiExport {
     }
 
     private static String toBrString(String clue) {
-        return html2text(notNull(clue).replaceAll("<br>", "~")).replaceAll("~",System.lineSeparator());
+        return html2text(notNull(clue).replaceAll("<br>", "~")).replaceAll("~",System.lineSeparator()).replaceAll("\\:\\)", ")");
     }
 
     private static String notNull(String str) {
