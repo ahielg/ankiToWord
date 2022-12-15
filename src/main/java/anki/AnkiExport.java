@@ -14,7 +14,7 @@ import static java.util.stream.Collectors.groupingBy;
 
 @Slf4j
 public class AnkiExport {
-
+    public static final List<String> seif = List.of("סי רעא", "סי רעע");
     private Connection connect(String fileLocation) {
         // SQLite connection string
         String url = "jdbc:sqlite:" + fileLocation;
@@ -97,7 +97,7 @@ public class AnkiExport {
         AtomicReference<String> currTopic = new AtomicReference<>("");
         AtomicInteger currQuestion = new AtomicInteger(1);
         sortedTopics.stream()
-                .filter(t -> t.contains("סי רעא") ||  t.contains("סי רעט"))
+                .filter(t -> seif.stream().anyMatch(t::contains))
                 .map(questionsByTopic::get)
                 .forEach(questions -> {
                     AnkiQuestion firstQuestion = questions.get(0);
