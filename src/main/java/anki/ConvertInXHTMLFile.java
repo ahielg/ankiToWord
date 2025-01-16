@@ -37,6 +37,7 @@ public class ConvertInXHTMLFile {
         ImportXHTMLProperties.setProperty("docx4j-ImportXHTML.Bidi.Heuristic", true);
         createDocx("//", unescaped);
     }
+
     public static void createDocx(String baseURL, String html) throws JAXBException, Docx4JException {
         System.out.println("Unescaped: " + html);
 
@@ -59,8 +60,8 @@ public class ConvertInXHTMLFile {
         XHTMLImporterImpl XHTMLImporter = new XHTMLImporterImpl(wordMLPackage);
 
         XHTMLImporter.setHyperlinkStyle("Hyperlink");
-        wordMLPackage.getMainDocumentPart().getContent().addAll(
-                XHTMLImporter.convert(html, baseURL));
+        wordMLPackage.getMainDocumentPart().getContent()
+                .addAll(XHTMLImporter.convert(html, baseURL));
 
         System.out.println(
                 XmlUtils.marshaltoString(wordMLPackage.getMainDocumentPart().getJaxbElement(), true, true));

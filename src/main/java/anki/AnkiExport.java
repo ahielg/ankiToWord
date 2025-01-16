@@ -14,7 +14,7 @@ import static java.util.stream.Collectors.groupingBy;
 
 @Slf4j
 public class AnkiExport {
-    public static final List<String> seif = List.of("סי רעא", "סי רעע");
+    public static final List<String> seif = List.of("סי פח", "סי פז");
     private Connection connect(String fileLocation) {
         // SQLite connection string
         String url = "jdbc:sqlite:" + fileLocation;
@@ -113,8 +113,8 @@ public class AnkiExport {
                             //.map(AnkiExport::html2text)
                             .forEach(q -> {
                                 System.out.println("❓ " + currQuestion.getAndIncrement() + ". " + html2text(q.getQuestion()));
-                                String clue = q.getClue();
-                                System.out.println(toBrString(clue));
+                                //System.out.println(toBrString(q.getClue()));
+                                System.out.println(toBrString(q.getAnswer()));
                                 System.out.println();
                             });
                 });

@@ -7,7 +7,7 @@ import java.util.List;
 public class Main {
     static FileWriter fw;
     public static List<String> listFiles(String path) {
-        String[] pathnames;
+        String[] pathNames;
 
         // Creates a new File instance by converting the given pathname string
         // into an abstract pathname
@@ -16,16 +16,16 @@ public class Main {
         FilenameFilter filter = (f1, name) -> name.endsWith(".txt") &&  !name.endsWith("-new.txt");
 
         // Populates the array with names of files and directories
-        pathnames = f.list(filter);
+        pathNames = f.list(filter);
 
 
-        // For each pathname in the pathnames array
-        assert pathnames != null;
-        for (String pathname : pathnames) {
+        // For each pathname in the pathNames array
+        assert pathNames != null;
+        for (String pathname : pathNames) {
             // Print the names of files and directories
             System.out.println(pathname);
         }
-        return Arrays.asList(pathnames);
+        return Arrays.asList(pathNames);
 
     }
     public static void main(String[] args) throws IOException {
